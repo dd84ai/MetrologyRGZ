@@ -2,13 +2,13 @@
 #pragma once
 
 #include <set>
-#include <stdio.h>
+//#include <stdio.h>
 
 template<class T> struct TsetParent
 {
 public:
 	
-	std::set<T> Stdset;
+	//std::set<T> Stdset;
 	
 	/*virtual void clear() = 0;
 	virtual void insert(T d) = 0;
@@ -22,7 +22,7 @@ public:
 template<class T> class Tset : public TsetParent<T>
 {
 public:	
-
+	std::set<T> Stdset;
 	//Пустой конструктор
 	Tset()
 	{
