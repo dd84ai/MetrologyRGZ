@@ -2,21 +2,21 @@
 #pragma once
 
 #include <set>
-
+#include <stdio.h>
 
 template<class T> struct TsetParent
 {
 public:
 	
-	std::set<T> my_set;
+	std::set<T> Stdset;
 	
-	virtual void clear() = 0;
+	/*virtual void clear() = 0;
 	virtual void insert(T d) = 0;
 	virtual void erase(T d) = 0;
 	virtual bool empty() = 0;
 	virtual bool contains(T d) = 0;
 	virtual int size() = 0;
-	virtual T getValue(int j) = 0;
+	virtual T getValue(int j) = 0;*/
 };
 
 template<class T> class Tset : public TsetParent<T>
@@ -31,36 +31,36 @@ public:
 	//Опустошить
 	void clear()
 	{
-		my_set.clear();
+		Stdset.clear();
 	}
 	//Добавить
 	void insert(T d)
 	{
-		my_set.insert(d);
+		Stdset.insert(d);
 	}
 	//Удалить
 	void erase(T d)
 	{
-		my_set.erase(d);
+		Stdset.erase(d);
 	}
 	//Пусто
 	bool empty()
 	{
-		return my_set.empty();
+		return Stdset.empty();
 	}
 	//Принадлежит
 	bool contains(T d)
 	{
-		return my_set.find(d) != my_set.end();
+		return Stdset.find(d) != Stdset.end();
 	}
 	//Объединить
 	Tset<T> Union(Tset<T> q)
 	{
 		Tset<T> res;
-		for (T elem : my_set)
+		for (T elem : Stdset)
 			res.insert(elem);
 
-		for (T elem : q.my_set)
+		for (T elem : q.Stdset)
 			res.insert(elem);
 		return res;
 	}
@@ -68,10 +68,10 @@ public:
 	Tset<T> substract(Tset<T> q)
 	{
 		Tset<T> res;
-		for (T elem : my_set)
+		for (T elem : Stdset)
 			res.insert(elem);
 
-		for (T elem : q.my_set)
+		for (T elem : q.Stdset)
 			res.erase(elem);
 		return res;
 	}
@@ -80,7 +80,7 @@ public:
 	{
 		Tset<T> res;
 
-		for (T elem : my_set)
+		for (T elem : Stdset)
 			if (q.contains(elem))
 				res.insert(elem);
 		return res;
@@ -89,15 +89,15 @@ public:
 	//Элементов
 	int size()
 	{
-		return my_set.size();
+		return Stdset.size();
 	}
 
 	//Элемент
 	T getValue(int j)
 	{
-		if (j >= my_set.size())
+		if (j >= Stdset.size())
 			throw std::out_of_range("Tset::getValue out of range error");
-		auto iter = my_set.begin();
+		auto iter = Stdset.begin();
 		for (int i = 0; i < j; i++)
 		{
 			iter++;
