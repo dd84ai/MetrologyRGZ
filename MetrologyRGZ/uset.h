@@ -4,16 +4,22 @@
 #include <set>
 
 
-template<class T> struct Parent
+template<class T> struct TsetParent
 {
 public:
 	
 	std::set<T> my_set;
 	
-	//virtual void clear();
+	virtual void clear() = 0;
+	virtual void insert(T d) = 0;
+	virtual void erase(T d) = 0;
+	virtual bool empty() = 0;
+	virtual bool contains(T d) = 0;
+	virtual int size() = 0;
+	virtual T getValue(int j) = 0;
 };
 
-template<class T> class Tset : public Parent<T>
+template<class T> class Tset : public TsetParent<T>
 {
 public:	
 
@@ -100,4 +106,3 @@ public:
 	}
 };
 
-//Модуль UnitTests.cpp

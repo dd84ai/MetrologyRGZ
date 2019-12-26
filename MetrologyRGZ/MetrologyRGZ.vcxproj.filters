@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="user.h">
+    <ClInclude Include="uset.h">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
   </ItemGroup>

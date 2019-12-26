@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "..\MetrologyRGZ\user.h"
+#include "..\MetrologyRGZ\uset.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTest1
@@ -9,12 +9,12 @@ namespace UnitTest1
 	{
 	public:
 
-		TEST_METHOD(TestMethod_constructor)
+		TEST_METHOD(TestMethod_constructor) //1
 		{
 			Tset<int> t;
 			Assert::IsTrue(t.empty());
 		}
-		TEST_METHOD(TestMethod_clear)
+		TEST_METHOD(TestMethod_clear) //2
 		{
 			Tset<int> t;
 			t.insert(1);
@@ -32,6 +32,7 @@ namespace UnitTest1
 			Tset<int> t;
 			t.insert(1);
 			t.insert(1);
+			t.insert(1);
 			Assert::AreEqual(1, t.size());
 			Assert::IsTrue(t.contains(1));
 		}
@@ -41,10 +42,13 @@ namespace UnitTest1
 			Tset<int> t;
 			t.insert(1);
 			t.insert(2);
+			t.insert(3);
 			t.erase(1);
+			t.erase(2);
 			Assert::AreEqual(1, t.size());
 			Assert::IsFalse(t.contains(1));
-			Assert::IsTrue(t.contains(2));
+			Assert::IsFalse(t.contains(2));
+			Assert::IsTrue(t.contains(3));
 		}
 
 		TEST_METHOD(TestMethod_erase_empty)
