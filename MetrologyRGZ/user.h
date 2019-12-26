@@ -3,10 +3,19 @@
 
 #include <set>
 
-template<class T> struct Tset
+
+template<class T> struct Parent
 {
-	//Множество данных
+public:
+	
 	std::set<T> my_set;
+	
+	//virtual void clear();
+};
+
+template<class T> class Tset : public Parent<T>
+{
+public:	
 
 	//Пустой конструктор
 	Tset()
